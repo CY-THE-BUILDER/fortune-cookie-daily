@@ -37,6 +37,14 @@ const streakMilestones: Record<number, string> = {
 };
 
 const shareFallbackTitle = "Fortune Cookie Daily";
+const crumbPieces = [
+  { id: "crumb-1", x: -74, y: -22, rotate: -20, delay: 0.02 },
+  { id: "crumb-2", x: -52, y: 36, rotate: 24, delay: 0.08 },
+  { id: "crumb-3", x: -8, y: -54, rotate: 44, delay: 0.12 },
+  { id: "crumb-4", x: 56, y: -28, rotate: -34, delay: 0.06 },
+  { id: "crumb-5", x: 72, y: 24, rotate: 18, delay: 0.14 },
+  { id: "crumb-6", x: 16, y: 58, rotate: -26, delay: 0.18 }
+];
 
 export default function HomePage() {
   const [seed, setSeed] = useState("");
@@ -324,6 +332,11 @@ export default function HomePage() {
       <section className="relative mt-8 flex min-h-[370px] items-center justify-center overflow-hidden rounded-[2.5rem] border border-white/50 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.8),transparent_42%),linear-gradient(180deg,rgba(255,247,232,0.9),rgba(248,220,180,0.92))] px-4 py-8 shadow-cookie">
         <div className="absolute -top-10 h-32 w-32 rounded-full bg-white/30 blur-3xl" />
         <div className="absolute bottom-0 left-1/2 h-28 w-56 -translate-x-1/2 rounded-full bg-[#c98e4d]/25 blur-3xl" />
+        <motion.div
+          animate={{ opacity: [0.3, 0.55, 0.3], scale: [0.92, 1.04, 0.92] }}
+          transition={{ duration: 4.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+          className="absolute left-1/2 top-[22%] h-32 w-32 -translate-x-1/2 rounded-full bg-white/35 blur-3xl"
+        />
 
         {stage !== "message" && (
           <div className="flex w-full flex-col items-center justify-center gap-6">
@@ -339,19 +352,52 @@ export default function HomePage() {
               className="relative flex h-[220px] w-[220px] items-center justify-center"
               aria-label="Open fortune cookie"
             >
+              {crumbPieces.map((crumb) => (
+                <motion.span
+                  key={crumb.id}
+                  animate={
+                    stage === "cracking"
+                      ? {
+                          opacity: [0, 1, 0],
+                          x: [0, crumb.x],
+                          y: [0, crumb.y],
+                          rotate: [0, crumb.rotate],
+                          scale: [0.8, 1, 0.88]
+                        }
+                      : { opacity: 0, x: 0, y: 0, rotate: 0, scale: 0.6 }
+                  }
+                  transition={{ duration: 0.55, delay: crumb.delay, ease: "easeOut" }}
+                  className="absolute left-1/2 top-1/2 h-3 w-4 rounded-full bg-[#d7944f] shadow-[0_6px_10px_rgba(126,75,30,0.18)]"
+                />
+              ))}
+
+              <motion.span
+                animate={
+                  stage === "cracking"
+                    ? { opacity: [0, 0.95, 0.2], scaleY: [0.2, 1, 0.9] }
+                    : { opacity: 0, scaleY: 0.4 }
+                }
+                transition={{ duration: 0.35, delay: 0.08 }}
+                className="absolute left-1/2 top-[33%] z-20 h-16 w-[3px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.85),rgba(112,61,21,0.9),rgba(255,255,255,0.2))]"
+              />
+
               <motion.div
                 animate={stage === "paper" ? { x: -34, y: -10, rotate: -20 } : { x: 0, y: 0, rotate: -8 }}
                 transition={{ duration: 0.5 }}
-                className="absolute h-28 w-36 rounded-[55%_45%_52%_48%/56%_44%_56%_44%] border border-[#d59552]/70 bg-[linear-gradient(180deg,#f5c781,#ce8a43)] shadow-[inset_0_8px_16px_rgba(255,255,255,0.25),0_16px_30px_rgba(139,86,35,0.28)]"
+                className="absolute h-28 w-36 rounded-[55%_45%_52%_48%/56%_44%_56%_44%] border border-[#d59552]/70 bg-[linear-gradient(180deg,#f7cf8f,#d69048_62%,#ba7433)] shadow-[inset_0_10px_18px_rgba(255,255,255,0.25),inset_0_-10px_18px_rgba(135,77,27,0.18),0_16px_30px_rgba(139,86,35,0.28)]"
               >
                 <span className="absolute left-6 top-4 h-12 w-1 rounded-full bg-white/20" />
+                <span className="absolute left-7 top-5 h-10 w-16 rounded-full bg-white/14 blur-md" />
+                <span className="absolute bottom-4 left-8 h-8 w-20 rounded-full border border-[#aa6a31]/25" />
               </motion.div>
               <motion.div
                 animate={stage === "paper" ? { x: 34, y: 14, rotate: 24 } : { x: 0, y: 0, rotate: 12 }}
                 transition={{ duration: 0.5 }}
-                className="absolute h-28 w-36 rounded-[45%_55%_46%_54%/48%_52%_48%_52%] border border-[#d59552]/70 bg-[linear-gradient(180deg,#f6cb88,#d89247)] shadow-[inset_0_8px_16px_rgba(255,255,255,0.24),0_16px_30px_rgba(139,86,35,0.28)]"
+                className="absolute h-28 w-36 rounded-[45%_55%_46%_54%/48%_52%_48%_52%] border border-[#d59552]/70 bg-[linear-gradient(180deg,#f8cf8f,#dc9549_62%,#be7634)] shadow-[inset_0_10px_18px_rgba(255,255,255,0.24),inset_0_-10px_18px_rgba(135,77,27,0.18),0_16px_30px_rgba(139,86,35,0.28)]"
               >
                 <span className="absolute right-6 top-5 h-12 w-1 rounded-full bg-white/20" />
+                <span className="absolute right-7 top-5 h-10 w-16 rounded-full bg-white/14 blur-md" />
+                <span className="absolute bottom-4 right-8 h-8 w-20 rounded-full border border-[#aa6a31]/25" />
               </motion.div>
             </motion.button>
 
@@ -361,12 +407,20 @@ export default function HomePage() {
               initial={false}
               animate={
                 stage === "paper"
-                  ? { opacity: 1, y: 0, scale: 1, rotate: 0 }
-                  : { opacity: 0, y: 12, scale: 0.9, rotate: -2 }
+                  ? {
+                      opacity: 1,
+                      y: 0,
+                      scale: [0.92, 1.04, 1],
+                      rotate: [0, -2, 0],
+                      rotateX: [84, 0, 0]
+                    }
+                  : { opacity: 0, y: 12, scale: 0.9, rotate: -2, rotateX: 84 }
               }
-              transition={{ duration: 0.45, delay: 0.15 }}
-              className="paper-grain rounded-2xl border border-[var(--paper-edge)] px-6 py-4 text-center shadow-paper"
+              transition={{ duration: 0.55, delay: 0.15 }}
+              style={{ transformPerspective: 900 }}
+              className="paper-grain relative rounded-2xl border border-[var(--paper-edge)] px-6 py-4 text-center shadow-paper"
             >
+              <span className="absolute inset-x-5 top-2 h-px bg-[#b88d5d]/20" />
               <p className="text-xs tracking-[0.3em] text-ink/45">FORTUNE</p>
               <p className="mt-2 text-sm text-ink/75">點一下紙條</p>
             </motion.button>
@@ -379,15 +433,25 @@ export default function HomePage() {
 
         {stage === "message" && activeMessage && (
           <motion.article
-            initial={{ opacity: 0, scale: 0.85, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.45 }}
+            initial={{ opacity: 0, scale: 0.82, y: 28, rotateX: 18 }}
+            animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            style={{ transformPerspective: 1100 }}
             className="paper-grain relative w-full rounded-[2rem] border border-[var(--paper-edge)] px-6 py-7 shadow-paper"
           >
+            <div className="absolute inset-x-6 top-3 h-px bg-[#ba9667]/20" />
+            <div className="absolute bottom-3 left-6 right-6 h-px bg-[#ba9667]/12" />
             <div className="space-y-2 text-center">
               <p className="text-xs tracking-[0.3em] text-ink/45">{dailyLabel}</p>
               <p className="text-sm text-ink/60">{formatDisplayDate(activeMessage.sourceDate)}</p>
-              <p className="pt-4 font-display text-4xl leading-tight text-ink">「{activeMessage.message.text}」</p>
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.12 }}
+                className="pt-4 font-display text-4xl leading-tight text-ink"
+              >
+                「{activeMessage.message.text}」
+              </motion.p>
             </div>
 
             <div className="mt-8 grid grid-cols-3 gap-2">
