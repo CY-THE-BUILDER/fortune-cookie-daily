@@ -56,6 +56,120 @@ const dustPieces = [
   { id: "dust-6", x: 44, y: 28, delay: 0.18 }
 ];
 
+function FullCookieArtwork() {
+  return (
+    <svg viewBox="0 0 320 240" className="h-full w-full drop-shadow-[0_24px_30px_rgba(120,72,25,0.28)]">
+      <defs>
+        <linearGradient id="cookieShell" x1="76" y1="54" x2="244" y2="196" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#f7cf8b" />
+          <stop offset="0.45" stopColor="#e9a75c" />
+          <stop offset="1" stopColor="#bf722f" />
+        </linearGradient>
+        <linearGradient id="cookieRim" x1="112" y1="80" x2="238" y2="168" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#f9dfa9" />
+          <stop offset="1" stopColor="#cc8041" />
+        </linearGradient>
+        <radialGradient id="cookieGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(166 90) rotate(90) scale(78 112)">
+          <stop stopColor="white" stopOpacity="0.62" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <path
+        d="M71 154C71 105 113 68 161 68C197 68 229 90 244 121C250 132 257 148 257 161C257 178 248 190 232 196C208 206 186 176 167 173C146 170 121 205 94 196C79 191 71 176 71 154Z"
+        fill="url(#cookieShell)"
+      />
+      <path
+        d="M105 163C119 151 132 129 150 107C162 93 178 82 198 78C226 73 247 94 247 121C247 139 231 150 216 151C199 152 189 137 174 137C160 137 149 148 142 157C131 170 120 189 102 190C85 191 74 178 74 160C74 140 87 123 103 108"
+        fill="none"
+        stroke="url(#cookieRim)"
+        strokeWidth="23"
+        strokeLinecap="round"
+      />
+      <path
+        d="M92 168C109 171 119 161 131 145C146 124 158 107 176 94C190 84 208 78 223 80"
+        fill="none"
+        stroke="#8e5322"
+        strokeOpacity="0.32"
+        strokeWidth="8"
+        strokeLinecap="round"
+      />
+      <path
+        d="M171 111C175 130 164 149 145 161"
+        fill="none"
+        stroke="#9f5e28"
+        strokeOpacity="0.32"
+        strokeWidth="6"
+        strokeLinecap="round"
+      />
+      <ellipse cx="163" cy="111" rx="82" ry="50" fill="url(#cookieGlow)" />
+      <ellipse cx="181" cy="177" rx="75" ry="18" fill="#8f5626" opacity="0.18" />
+    </svg>
+  );
+}
+
+function CookieHalfArtwork({ side }: { side: "left" | "right" }) {
+  const isLeft = side === "left";
+
+  return (
+    <svg viewBox="0 0 170 170" className="h-full w-full drop-shadow-[0_16px_24px_rgba(120,72,25,0.24)]">
+      <defs>
+        <linearGradient id={`halfShell-${side}`} x1="20" y1="24" x2="150" y2="150" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#f8d392" />
+          <stop offset="0.45" stopColor="#e3a25a" />
+          <stop offset="1" stopColor="#bf732f" />
+        </linearGradient>
+        <linearGradient id={`halfInner-${side}`} x1="56" y1="58" x2="122" y2="126" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#8f5524" />
+          <stop offset="1" stopColor="#cf8750" />
+        </linearGradient>
+      </defs>
+      <path
+        d={
+          isLeft
+            ? "M25 112C25 62 62 25 108 25C129 25 146 34 154 48C159 57 159 73 152 84C143 98 127 98 116 107C99 120 91 147 66 147C41 147 25 134 25 112Z"
+            : "M145 112C145 62 108 25 62 25C41 25 24 34 16 48C11 57 11 73 18 84C27 98 43 98 54 107C71 120 79 147 104 147C129 147 145 134 145 112Z"
+        }
+        fill={`url(#halfShell-${side})`}
+      />
+      <path
+        d={
+          isLeft
+            ? "M103 55C92 67 86 81 77 92C66 106 49 110 35 109C35 83 51 57 76 42C89 34 105 31 118 33C117 42 111 47 103 55Z"
+            : "M67 55C78 67 84 81 93 92C104 106 121 110 135 109C135 83 119 57 94 42C81 34 65 31 52 33C53 42 59 47 67 55Z"
+        }
+        fill={`url(#halfInner-${side})`}
+        opacity="0.78"
+      />
+      <path
+        d={isLeft ? "M108 46C95 61 88 74 81 88" : "M62 46C75 61 82 74 89 88"}
+        stroke="#fff4de"
+        strokeOpacity="0.34"
+        strokeWidth="7"
+        strokeLinecap="round"
+      />
+      <path
+        d={isLeft ? "M113 101C99 109 92 120 87 133" : "M57 101C71 109 78 120 83 133"}
+        stroke="#8f5423"
+        strokeOpacity="0.28"
+        strokeWidth="6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function FoldedPaperArtwork() {
+  return (
+    <svg viewBox="0 0 120 160" className="h-full w-full drop-shadow-[0_14px_22px_rgba(117,87,58,0.18)]">
+      <rect x="18" y="18" width="42" height="124" rx="12" fill="#fffdf8" stroke="#d8c2a7" />
+      <rect x="60" y="18" width="42" height="124" rx="12" fill="#f7eedf" stroke="#d8c2a7" />
+      <path d="M60 20V142" stroke="#d0b99b" strokeOpacity="0.8" />
+      <path d="M28 48H92" stroke="#d8c2a7" strokeOpacity="0.5" />
+      <path d="M28 79H92" stroke="#d8c2a7" strokeOpacity="0.35" />
+    </svg>
+  );
+}
+
 export default function HomePage() {
   const [seed, setSeed] = useState("");
   const [stage, setStage] = useState<AppStage>("idle");
@@ -419,88 +533,71 @@ export default function HomePage() {
                 />
               ))}
 
+              <motion.div
+                animate={
+                  stage === "idle"
+                    ? { opacity: 1, scale: 1, rotate: 0, y: 0 }
+                    : stage === "cracking"
+                      ? { opacity: [1, 1, 0], scale: [1, 0.98, 1.05], rotate: [0, -3, 3], y: [0, 2, -2] }
+                      : { opacity: 0, scale: 1.05, rotate: 0, y: -4 }
+                }
+                transition={{ duration: 0.42, ease: "easeOut" }}
+                className="absolute z-20 h-[176px] w-[236px]"
+              >
+                <FullCookieArtwork />
+              </motion.div>
+
               <motion.span
                 animate={
                   stage === "cracking"
-                    ? { opacity: [0, 0.95, 0.14], scaleY: [0.2, 1.08, 0.9], y: [0, -2, 0] }
-                    : { opacity: 0, scaleY: 0.4, y: 0 }
+                    ? { opacity: [0, 0.92, 0], scaleY: [0.3, 1.1, 0.82], y: [0, -4, 2] }
+                    : { opacity: 0, scaleY: 0.2, y: 0 }
                 }
-                transition={{ duration: 0.35, delay: 0.08 }}
-                className="absolute left-1/2 top-[34%] z-30 h-16 w-[3px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.85),rgba(112,61,21,0.9),rgba(255,255,255,0.2))]"
+                transition={{ duration: 0.32, delay: 0.12 }}
+                className="absolute left-1/2 top-[31%] z-40 h-[82px] w-[4px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,rgba(255,245,225,0.95),rgba(110,60,22,0.95),rgba(255,255,255,0.1))]"
               />
 
               <motion.div
                 animate={
                   stage === "paper"
-                    ? { opacity: 1, y: -2, scale: 1, rotate: 0 }
+                    ? { opacity: 1, y: 0, scale: 1, rotate: 0 }
                     : stage === "cracking"
-                      ? { opacity: [0, 1, 0.95], y: [30, 10, 2], scale: [0.68, 0.92, 0.96], rotate: [0, -2, 0] }
+                      ? { opacity: [0, 1, 0.96], y: [34, 12, 2], scale: [0.64, 0.9, 0.96], rotate: [0, -2, 0] }
                       : { opacity: 0, y: 30, scale: 0.65, rotate: 0 }
                 }
                 transition={{ duration: 0.54, delay: 0.18, ease: "easeOut" }}
-                className="absolute left-1/2 top-[43%] z-20 -translate-x-1/2"
+                className="absolute left-1/2 top-[38%] z-30 -translate-x-1/2"
               >
-                <div className="relative h-[100px] w-[82px]">
-                  <span className="absolute inset-y-0 left-0 w-1/2 rounded-l-[16px] border border-r-0 border-[#d8c2a7] bg-[linear-gradient(180deg,#fffefb,#f1e6d1)] shadow-[0_12px_24px_rgba(117,87,58,0.18)]" />
-                  <span className="absolute inset-y-0 right-0 w-1/2 rounded-r-[16px] border border-l-0 border-[#d8c2a7] bg-[linear-gradient(180deg,#fffefb,#f5ecdb)] shadow-[0_12px_24px_rgba(117,87,58,0.18)]" />
-                  <span className="absolute inset-y-2 left-1/2 z-10 w-px -translate-x-1/2 bg-[#d9c4a7]/50" />
-                  <span className="absolute left-3 right-3 top-5 h-px bg-[#cba87a]/20" />
-                  <span className="absolute left-3 right-3 top-[49px] h-px bg-[#d9c4a7]/22" />
+                <div className="h-[104px] w-[84px]">
+                  <FoldedPaperArtwork />
                 </div>
               </motion.div>
 
               <motion.div
                 animate={
                   stage === "paper"
-                    ? { x: -72, y: 10, rotate: -30 }
+                    ? { opacity: 1, x: -70, y: 10, rotate: -28, scale: 1 }
                     : stage === "cracking"
-                      ? { x: [-6, -18, -42], y: [0, 2, 6], rotate: [-8, -16, -22] }
-                      : { x: 0, y: 0, rotate: -7 }
+                      ? { opacity: [0, 1, 1], x: [-8, -22, -46], y: [0, 2, 8], rotate: [-4, -14, -22], scale: [0.94, 1, 1] }
+                      : { opacity: 0, x: -10, y: 0, rotate: -8, scale: 0.92 }
                 }
                 transition={{ duration: 0.56, ease: "easeOut" }}
-                className="absolute z-20 h-[126px] w-[152px] rounded-[74%_26%_60%_40%/58%_32%_68%_42%] border border-[#c88440]/75 bg-[linear-gradient(180deg,#f7d295,#dfa15a_54%,#c77935)] shadow-[inset_0_12px_16px_rgba(255,255,255,0.22),inset_0_-12px_18px_rgba(124,70,24,0.2),0_20px_30px_rgba(139,86,35,0.28)]"
-                style={{ clipPath: "polygon(0 22%, 92% 0, 88% 100%, 0 78%)" }}
+                className="absolute z-30 h-[150px] w-[156px]"
               >
-                <span className="absolute left-3 top-6 h-16 w-24 rounded-full bg-white/12 blur-md" />
-                <span className="absolute right-5 top-4 h-20 w-10 rounded-full border border-[#a86731]/24" />
-                <span className="absolute bottom-4 left-4 h-10 w-16 rounded-full border border-[#8f531f]/18" />
-                <span className="absolute right-[-10px] top-[36px] h-10 w-8 rounded-full bg-[#f1bd78]" />
-                <span className="absolute right-0 top-[22px] h-[76px] w-[26px] bg-[radial-gradient(circle_at_left,#8e5626_0%,#b36d31_36%,transparent_70%)] opacity-80" />
+                <CookieHalfArtwork side="left" />
               </motion.div>
               <motion.div
                 animate={
                   stage === "paper"
-                    ? { x: 72, y: 16, rotate: 32 }
+                    ? { opacity: 1, x: 72, y: 16, rotate: 30, scale: 1 }
                     : stage === "cracking"
-                      ? { x: [6, 20, 46], y: [0, 4, 10], rotate: [10, 18, 26] }
-                      : { x: 0, y: 0, rotate: 9 }
+                      ? { opacity: [0, 1, 1], x: [8, 24, 48], y: [0, 4, 10], rotate: [4, 14, 22], scale: [0.94, 1, 1] }
+                      : { opacity: 0, x: 10, y: 0, rotate: 8, scale: 0.92 }
                 }
                 transition={{ duration: 0.56, ease: "easeOut" }}
-                className="absolute z-20 h-[126px] w-[152px] rounded-[26%_74%_42%_58%/32%_58%_42%_68%] border border-[#c88440]/75 bg-[linear-gradient(180deg,#f7d295,#de9c54_54%,#c27431)] shadow-[inset_0_12px_16px_rgba(255,255,255,0.22),inset_0_-12px_18px_rgba(124,70,24,0.2),0_20px_30px_rgba(139,86,35,0.28)]"
-                style={{ clipPath: "polygon(8% 0, 100% 22%, 100% 78%, 12% 100%)" }}
+                className="absolute z-30 h-[150px] w-[156px]"
               >
-                <span className="absolute right-3 top-6 h-16 w-24 rounded-full bg-white/12 blur-md" />
-                <span className="absolute left-5 top-4 h-20 w-10 rounded-full border border-[#a86731]/24" />
-                <span className="absolute bottom-4 right-4 h-10 w-16 rounded-full border border-[#8f531f]/18" />
-                <span className="absolute left-[-10px] top-[38px] h-10 w-8 rounded-full bg-[#f1bd78]" />
-                <span className="absolute left-0 top-[22px] h-[76px] w-[26px] bg-[radial-gradient(circle_at_right,#8e5626_0%,#b36d31_36%,transparent_70%)] opacity-80" />
-              </motion.div>
-
-              <motion.div
-                animate={
-                  stage === "paper"
-                    ? { opacity: 0, scale: 0.8 }
-                    : stage === "cracking"
-                      ? { opacity: [1, 0.85, 0.1], scale: [1, 1.08, 0.72], y: [0, 3, 8] }
-                      : { opacity: 1, scale: 1, y: 0 }
-                }
-                transition={{ duration: 0.45 }}
-                className="absolute z-30 h-[92px] w-[126px] rounded-[52%_48%_54%_46%/56%_58%_42%_44%] border border-[#d49a59]/70 bg-[linear-gradient(180deg,#f6cf91,#d58d44)] shadow-[inset_0_8px_14px_rgba(255,255,255,0.18),0_10px_20px_rgba(145,89,38,0.2)]"
-              >
-                <span className="absolute inset-x-5 top-7 h-[20px] rounded-full bg-[#8e5626]/22 blur-sm" />
-                <span className="absolute left-1/2 top-[16px] h-[54px] w-[34px] -translate-x-1/2 rounded-[50%] border-x border-[#a5642f]/45" />
-                <span className="absolute left-[22px] top-[16px] h-[52px] w-[34px] rounded-full border-t border-[#a5642f]/18" />
-                <span className="absolute right-[22px] top-[16px] h-[52px] w-[34px] rounded-full border-t border-[#a5642f]/18" />
+                <CookieHalfArtwork side="right" />
               </motion.div>
             </motion.button>
 
