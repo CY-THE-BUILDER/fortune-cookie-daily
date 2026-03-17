@@ -1,23 +1,27 @@
 <svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <filter id="shadow" x="8" y="16" width="190" height="184" filterUnits="userSpaceOnUse">
-      <feDropShadow dx="0" dy="14" stdDeviation="10" flood-color="#8F5B2E" flood-opacity="0.24"/>
+    <filter id="shadow" x="4" y="18" width="182" height="180" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="12" stdDeviation="9" flood-color="#8F5B2E" flood-opacity="0.24"/>
     </filter>
-    <radialGradient id="shell" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(118 94) rotate(128) scale(104 90)">
-      <stop offset="0" stop-color="#F7D59D"/>
-      <stop offset="0.46" stop-color="#E4A059"/>
+    <radialGradient id="shell" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(106 96) rotate(134) scale(96 86)">
+      <stop offset="0" stop-color="#F7D69F"/>
+      <stop offset="0.45" stop-color="#E4A059"/>
       <stop offset="1" stop-color="#B96D2D"/>
     </radialGradient>
-    <linearGradient id="edge" x1="132" y1="42" x2="90" y2="172" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#8A5120"/>
-      <stop offset="1" stop-color="#D08A50"/>
+    <linearGradient id="crumb" x1="118" y1="70" x2="104" y2="164" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#855021"/>
+      <stop offset="1" stop-color="#D89A63"/>
     </linearGradient>
   </defs>
   <g filter="url(#shadow)">
-    <path d="M40 134C40 80 79 38 132 38C154 38 173 46 181 59C187 68 188 83 183 95C176 112 162 119 151 126C137 136 132 164 113 175C99 182 83 183 67 175C49 166 40 152 40 134Z" fill="url(#shell)"/>
-    <path d="M146 55C132 73 123 88 114 102C100 123 78 132 53 130" stroke="#FFF4DD" stroke-opacity="0.48" stroke-width="9" stroke-linecap="round"/>
-    <path d="M139 48C144 69 137 93 123 110" stroke="#B76B32" stroke-opacity="0.3" stroke-width="6" stroke-linecap="round"/>
-    <path d="M147 73C136 92 132 112 129 134C124 156 113 171 96 179" stroke="url(#edge)" stroke-width="20" stroke-linecap="round"/>
-    <path d="M150 76C138 94 133 113 130 133" stroke="#6F4019" stroke-opacity="0.42" stroke-width="6" stroke-linecap="round"/>
+    <path d="M38 132C38 81 76 40 127 40C146 40 162 46 170 58C176 66 177 80 173 92C167 109 155 116 145 123C134 130 129 142 121 156C112 170 99 177 84 177C57 177 38 158 38 132Z" fill="url(#shell)"/>
+    <path d="M141 56C128 74 120 88 111 103C98 123 78 132 54 131" stroke="#FFF6E4" stroke-opacity="0.46" stroke-width="8" stroke-linecap="round"/>
+    <path d="M135 49C140 68 134 91 121 108" stroke="#BC7238" stroke-opacity="0.3" stroke-width="6" stroke-linecap="round"/>
+    <path d="M142 74L132 86L139 97L127 108L135 118L122 129L128 141L116 153L110 165" stroke="url(#crumb)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M143 75L132 86L139 97L127 108L135 118L122 129L128 141L116 153L111 163" stroke="#6F4019" stroke-opacity="0.44" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M116 152C111 158 105 165 96 170" stroke="#6F4019" stroke-opacity="0.24" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="124" cy="120" r="4" fill="#EBC286"/>
+    <circle cx="118" cy="134" r="3" fill="#EBC286"/>
+    <circle cx="111" cy="147" r="3" fill="#EBC286"/>
   </g>
 </svg>

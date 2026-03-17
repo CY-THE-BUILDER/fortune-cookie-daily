@@ -463,28 +463,40 @@ export default function HomePage() {
               <motion.div
                 animate={
                   stage === "paper"
-                    ? { opacity: 1, x: -70, y: 10, rotate: -28, scale: 1 }
+                    ? { opacity: 1, x: -68, y: 16, rotate: -34, scale: 0.96 }
                     : stage === "cracking"
-                      ? { opacity: [0, 1, 1], x: [-8, -22, -46], y: [0, 2, 8], rotate: [-4, -14, -22], scale: [0.94, 1, 1] }
+                      ? {
+                          opacity: [0, 1, 1],
+                          x: [-4, -18, -40],
+                          y: [0, 6, 18],
+                          rotate: [-4, -18, -30],
+                          scale: [0.88, 0.98, 0.94]
+                        }
                       : { opacity: 0, x: -10, y: 0, rotate: -8, scale: 0.92 }
                 }
                 transition={{ duration: 0.56, ease: "easeOut" }}
-                className="absolute z-30 h-[150px] w-[156px]"
+                className="absolute z-30 h-[148px] w-[152px]"
               >
-                <Image src="/cookie/left-half.svg" alt="" width={156} height={150} className="h-full w-full select-none" draggable={false} />
+                <Image src="/cookie/left-half.svg" alt="" width={152} height={148} className="h-full w-full select-none" draggable={false} />
               </motion.div>
               <motion.div
                 animate={
                   stage === "paper"
-                    ? { opacity: 1, x: 72, y: 16, rotate: 30, scale: 1 }
+                    ? { opacity: 1, x: 70, y: 20, rotate: 34, scale: 0.96 }
                     : stage === "cracking"
-                      ? { opacity: [0, 1, 1], x: [8, 24, 48], y: [0, 4, 10], rotate: [4, 14, 22], scale: [0.94, 1, 1] }
+                      ? {
+                          opacity: [0, 1, 1],
+                          x: [4, 18, 42],
+                          y: [0, 8, 20],
+                          rotate: [4, 18, 30],
+                          scale: [0.88, 0.98, 0.94]
+                        }
                       : { opacity: 0, x: 10, y: 0, rotate: 8, scale: 0.92 }
                 }
                 transition={{ duration: 0.56, ease: "easeOut" }}
-                className="absolute z-30 h-[150px] w-[156px]"
+                className="absolute z-30 h-[148px] w-[152px]"
               >
-                <Image src="/cookie/right-half.svg" alt="" width={156} height={150} className="h-full w-full select-none" draggable={false} />
+                <Image src="/cookie/right-half.svg" alt="" width={152} height={148} className="h-full w-full select-none" draggable={false} />
               </motion.div>
             </motion.button>
 
